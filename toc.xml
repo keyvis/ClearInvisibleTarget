@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Addon Author="keyvis" APIVersion="16" Name="ClearInvisibleTarget" Description="Clears &quot;invisible&quot; targeted objects that prevent from automatically targetting enemies on hit.">
+    <Script Name="ClearInvisibleTarget.lua"/>
+</Addon>
