@@ -3,13 +3,13 @@ require "Apollo"
 local ClearInvisibleTarget = {}
  
 function ClearInvisibleTarget:new(o)
-    o = o or {}
-    setmetatable(o, self)
+	o = o or {}
+	setmetatable(o, self)
 	self.__index = self
 
 	self.IsInvisibleTarget = true;
 	
-    return o
+	return o
 end
 
 function ClearInvisibleTarget:Init()
@@ -17,7 +17,7 @@ function ClearInvisibleTarget:Init()
 	local strConfigureButtonText = ""
 	local tDependencies = {}
 
-    Apollo.RegisterAddon(self, bHasConfigureFunction, strConfigureButtonText, tDependencies)
+	Apollo.RegisterAddon(self, bHasConfigureFunction, strConfigureButtonText, tDependencies)
 end
 
 function ClearInvisibleTarget:OnLoad()
