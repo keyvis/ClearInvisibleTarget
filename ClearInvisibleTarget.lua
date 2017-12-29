@@ -31,7 +31,7 @@ function ClearInvisibleTarget:OnHitOrMiss(casterUnit, targetUnit, spellName)
 	if self.IsInvisibleTarget == false then return end
 	if casterUnit ~= GameLib.GetPlayerUnit() then return end
 
-	GameLib.SetTargetUnit(targetUnit)
+	GameLib.SetTargetUnit(nil)
 end
 
 function ClearInvisibleTarget:OnDamageOrHealingDone(casterUnit, targetUnit, damageType, damageDone, argOne, argTwo, isCritical, spellName)
