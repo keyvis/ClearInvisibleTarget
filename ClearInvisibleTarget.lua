@@ -7,7 +7,8 @@ function ClearInvisibleTarget:new(o)
 	setmetatable(o, self)
 	self.__index = self
 
-	self.IsInvisibleTarget = true;
+	self.IsInvisibleTarget = true
+	self.InvisibleTargetName = "(unknown)"
 	
 	return o
 end
@@ -31,6 +32,8 @@ function ClearInvisibleTarget:OnHitOrMiss(casterUnit, targetUnit, spellName)
 	if self.IsInvisibleTarget == false then return end
 	if casterUnit ~= GameLib.GetPlayerUnit() then return end
 
+	Print("Invisible Target Cleared: " .. self.InvisibleTargetName)
+
 	GameLib.SetTargetUnit(nil)
 end
 
@@ -47,13 +50,12 @@ function ClearInvisibleTarget:OnTargetUnitChanged(unitTarget)
 
 	if unitTarget == nil then return end
 
-	local unitType = unitTarget:GetType()
+	local unitMaxHealth = unitTarget:GetMaxHealth()
 
-	Print("Target Unit Type: " .. unitType)
-
-	if unitType == "Player" or unitType == "NonPlayer" then return end
+	if unitMaxHealth ~= nil and unitMaxHealth > 0 then return end
 
 	self.IsInvisibleTarget = true
+	self.InvisibleTargetName = unitTarget:GetName() or "(unknown)"
 end
 
 local ClearInvisibleTargetInst = ClearInvisibleTarget:new()
